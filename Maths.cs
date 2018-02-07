@@ -1,4 +1,4 @@
-﻿
+
 
 using System;
 
@@ -23,7 +23,7 @@ namespace Whynot
         {
 
             screen = new Vector2();
-            Maths.ViewMatrix = Mem.ReadMatrix<float>(Mem.ReadMemory<int>(Mem.ReadMemory<int>(Mem.BaseAddress + 0x1CD54D0) + 4) + 196, 16);
+            Maths.ViewMatrix = Mem.ReadMatrix<float>(Mem.ReadMemory<int>(Mem.ReadMemory<int>(Mem.BaseAddress + Offsets.ViewMatrix) + 4) + 196, 16);
             Vector4 vector4;
             vector4.X = (float)((double)pos.X * (double)Maths.ViewMatrix[0] + (double)pos.Y * (double)Maths.ViewMatrix[4] + (double)pos.Z * (double)Maths.ViewMatrix[8]) + Maths.ViewMatrix[12];
             vector4.Y = (float)((double)pos.X * (double)Maths.ViewMatrix[1] + (double)pos.Y * (double)Maths.ViewMatrix[5] + (double)pos.Z * (double)Maths.ViewMatrix[9]) + Maths.ViewMatrix[13];
