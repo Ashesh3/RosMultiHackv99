@@ -144,7 +144,7 @@ namespace Whynot
             }
             else
             {
-                int num = (int)MessageBox.Show("ROS MultiHack v99 by ~Ashesh [unknowncheats]\n------------------------\nO & P - adjurst aimbot height \n F1 Show Players + esp \n F2 Only Aimbot, No ESP \n F3 -  SMART_AIM!  \nLEFT ALT - Toggle Aimbot \n U - Show FOV \n UP and DOWN arrow - Aimbot Range  \n LEFT and RIGHT arrow - Aimbot FOV change \n------------------------\nToggle Noclip: J\n Controls: RCTRL+Arrow Keys, Backspace,RShift , f4,f5 - speed of noclip");
+                int num = (int)MessageBox.Show("ROS MultiHack v99 by ~Ashesh [unknowncheats]\n------------------------\nO & P - adjurst aimbot height \n F1 Show Players + esp \n F2 Only Aimbot, No ESP \n F3 -  SMART_AIM!  \nLEFT ALT - Toggle Aimbot \n U - Show FOV \n UP and DOWN arrow - Aimbot Range  \n LEFT and RIGHT arrow - Aimbot FOV change \n------------------------\nToggle Noclip: J\n Controls: RCTRL+Arrow Keys, Backspace,RShift , f4,f5 - speed of noclip\n PLAYERNUKE - Delete");
                 Main.SetWindowLong(this.Handle, -20, Main.GetWindowLong(this.Handle, -20) | 524288 | 32);
             }
             new Thread(new ThreadStart(this.thread)).Start();
@@ -224,7 +224,7 @@ namespace Whynot
                     int nkk = (nuke) ? 1 : 0;
                     MethodInvoker inv = delegate
                     {
-                        this.label3.Text = "NUKE: "+nkk+"Range: " + range + " m \n" + "AIMBOT:" + aa + "\n" + "FOV:" + fov + "\n NOCLIP: " + n + "\nSmartAim: " + a2 + " \n Height: " + height + "\n NoClip Speed: " + speed;
+                        this.label3.Text = "NUKE: "+nkk+"\nRange: " + range + " m \n" + "AIMBOT:" + aa + "\n" + "FOV:" + fov + "\n NOCLIP: " + n + "\nSmartAim: " + a2 + " \n Height: " + height + "\n NoClip Speed: " + speed;
                     };
                     this.Invoke(inv);
 
