@@ -276,26 +276,97 @@ namespace Whynot
                                     }
                             }
                             dist = Helper.GetDistance(MyPosition, EnemyPos, 10);
-                            if (dist < range && aimbot && num6 > 0 && (Maths.InsideCircle((int)center.X, (int)center.Y, fov, (int)screen.X, (int)screen.Y)))
+                           if (dist < range && aimbot && num6 > 0 && (Maths.InsideCircle((int)center.X, (int)center.Y, fov, (int)screen.X, (int)screen.Y)))
                             {
 
                                 Vector2 aim;
                                 aim.X = screen.X + w;
-                                if (Settings.SmartHeight)
                                 {
-                                    height = 0;
-                                    if (dist > 100 && dist < 200)
-                                        aim.Y = (screen.Y - 20 + height + (-1 * (dist / 15)));
-                                    else if (dist < 100)
-                                        aim.Y = (screen.Y - 40 + height + (-1 * (dist / 15)));
-                                    else
-                                        aim.Y = (screen.Y + height + (-1 * (dist / 15)));
-                                }
-                                else
-                                {
+                                    if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 400)
+                                    {
+                                        height = -15;
+                                        fov = 50;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 350)
+                                    {
+                                        height = -15;
+                                        fov = 50;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 300)
+                                    {
+                                        height = -15;
+                                        fov = 50;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 250)
+                                    {
+                                        height = -18;
+                                        fov = 55;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 200)
+                                    {
+                                        height = -25;
+                                        fov = 60;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 150)
+                                    {
+                                        height = -35;
+                                        fov = 65;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 100)
+                                    {
+                                        height = -38;
+                                        fov = 70;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 50)
+                                    {
+                                        height = -40;
+                                        fov = 75;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 45)
+                                    {
+                                        height = -42;
+                                        fov = 85;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 40)
+                                    {
+                                        height = -45;
+                                        fov = 90;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 35)
+                                    {
+                                        height = -47;
+                                        fov = 100;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 30)
+                                    {
+                                        height = -60;
+                                        fov = 110;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 25)
+                                    {
+                                        height = -75;
+                                        fov = 120;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 20)
+                                    {
+                                        height = -100;
+                                        fov = 150;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 15)
+                                    {
+                                        height = -120;
+                                        fov = 200;
+                                    }
+                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 10)
+                                    {
+                                        height = -150;
+                                        fov = 350;
+                                    }
                                     aim.Y = screen.Y + height;
+
+
                                 }
-                               Cursor.Position = new Point((int)aim.X, (int)aim.Y); ;
+                                Cursor.Position = new Point((int)aim.X, (int)aim.Y); ;
 
                             }
                         }
