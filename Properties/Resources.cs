@@ -1,9 +1,3 @@
-﻿// Decompiled with JetBrains decompiler
-// Type: RosPublicCheat.Properties.Resources
-// Assembly: ReliefExternal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: 03EB7061-76EF-46FD-89DF-12D90B29AAE1
-// Assembly location: C:\Users\Zero-Sum\Desktop\Dumps\ReliefExternal-cleaned.exe
-
 using System.CodeDom.Compiler;
 using System.ComponentModel;
 using System.Diagnostics;
