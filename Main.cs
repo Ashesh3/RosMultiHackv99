@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 
@@ -12,10 +12,10 @@ namespace Whynot
 {
     public class Main : Form
     {
-
         public static float X, Y, Z = 0;
         public static int height = -30;
-        public string WINDOW_NAME="null";
+        public static bool nuke = false;
+        public string WINDOW_NAME = "null";
         public static int range = 200;
         public static int speed = 2;
         public static int fov = 30;
@@ -37,6 +37,7 @@ namespace Whynot
         private Label label1;
         private Label label2;
         private Label label3;
+        int res = WinAPI.SystemParametersInfo(113, 0, 20, 0);
         public static Point pointxx(Vector2 vec)
         {
             return new Point((int)vec.X, (int)vec.Y);
@@ -70,7 +71,7 @@ namespace Whynot
             {
                 if (!String.IsNullOrEmpty(process.MainWindowTitle))
                 {
-                    if(process.ProcessName=="ros")
+                    if (process.ProcessName == "ros")
                     {
                         WINDOW_NAME = process.MainWindowTitle;
                     }
@@ -124,10 +125,10 @@ namespace Whynot
             IntPtr aaaa = WinGetHandle(WINDOW_NAME);
             const int GWL_STYLE = (-16);
             const int WS_VISIBLE = 0x10000000;
-            SetWindowLong(aaaa, GWL_STYLE, (WS_VISIBLE));
+            //  SetWindowLong(aaaa, GWL_STYLE, (WS_VISIBLE));
             Rectangle resolution = Screen.PrimaryScreen.Bounds;
-            MoveWindow(aaaa, resolution.Top, resolution.Left, resolution.Width, resolution.Height, true);
-            ShowWindowAsync(aaaa, 3);
+            // MoveWindow(aaaa, resolution.Top, resolution.Left, resolution.Width, resolution.Height, true);
+            //ShowWindowAsync(aaaa, 3);
 
             this.TopMost = true;
             this.BackColor = Color.Black;
@@ -148,7 +149,7 @@ namespace Whynot
             }
             new Thread(new ThreadStart(this.thread)).Start();
         }
-          private void Loop_Tick(object sender, EventArgs e)
+        private void Loop_Tick(object sender, EventArgs e)
         {
             Main.GetWindowRect(Main.FindWindow((string)null, WINDOW_NAME), out this.rect);
             this.Size = new Size(this.rect.right - this.rect.left, this.rect.bottom - this.rect.top);
@@ -202,10 +203,12 @@ namespace Whynot
                     Mem.ReadMemory<int>(Adress3);
                     Mem.ReadMemory<int>(Adress3 + 12);
                     Vector3 EnemyPos = Mem.ReadMemory<Vector3>(Adress3 + 16);
+
                     num4 = (double)Mem.ReadMemory<float>(Adress3 + 56);
                     num5 = (double)Mem.ReadMemory<float>(Adress3 + 60);
                     num6 = Mem.ReadMemory<int>(Mem.ReadMemory<int>(Mem.ReadMemory<int>(Mem.ReadMemory<int>(Adress3 + 256) + 20) + 152) + 8);
                     name = Mem.ReadMemory<int>(Mem.ReadMemory<int>(Mem.ReadMemory<int>(Mem.ReadMemory<int>(Adress3 + 34) + 0) + 0) + 0);
+
                     Player = str.Contains("Avatar");
                     Bot = str.Contains("Robot");
                     Vehicle = str.Contains("Land");
@@ -243,13 +246,14 @@ namespace Whynot
                     {
                         if ((Player ? 1 : (!Bot ? 0 : ((uint)num6 > 0U ? 1 : 0))) != 0)
                         {
+                            if (nuke)
+                                Mem.WriteMemory<Vector3>(Adress3 + 16, MyPosition);
                             if (Settings.ESP == true)
                             {
                                 if (Settings.PlayerESP && num6 != 0)
                                 {
-
                                     drawnawbrudda.DrawString("Player", this.font, Brushes.Red, screen.X, screen.Y - 20f);
-                                    drawnawbrudda.DrawLine(Dpen, bottom, pointxx(screen));
+                                    //   drawnawbrudda.DrawLine(Dpen, bottom, pointxx(screen));
 
                                 }
 
@@ -276,95 +280,24 @@ namespace Whynot
                                     }
                             }
                             dist = Helper.GetDistance(MyPosition, EnemyPos, 10);
-                           if (dist < range && aimbot && num6 > 0 && (Maths.InsideCircle((int)center.X, (int)center.Y, fov, (int)screen.X, (int)screen.Y)))
+                            if (dist < range && aimbot && num6 > 0 && (Maths.InsideCircle((int)center.X, (int)center.Y, fov, (int)screen.X, (int)screen.Y)))
                             {
 
                                 Vector2 aim;
                                 aim.X = screen.X + w;
+                                if (Settings.SmartHeight)
                                 {
-                                    if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 400)
-                                    {
-                                        height = -15;
-                                        fov = 50;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 350)
-                                    {
-                                        height = -15;
-                                        fov = 50;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 300)
-                                    {
-                                        height = -15;
-                                        fov = 50;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 250)
-                                    {
-                                        height = -18;
-                                        fov = 55;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 200)
-                                    {
-                                        height = -25;
-                                        fov = 60;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 150)
-                                    {
-                                        height = -35;
-                                        fov = 65;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 100)
-                                    {
-                                        height = -38;
-                                        fov = 70;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 50)
-                                    {
-                                        height = -40;
-                                        fov = 75;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 45)
-                                    {
-                                        height = -42;
-                                        fov = 85;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 40)
-                                    {
-                                        height = -45;
-                                        fov = 90;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 35)
-                                    {
-                                        height = -47;
-                                        fov = 100;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 30)
-                                    {
-                                        height = -60;
-                                        fov = 110;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 25)
-                                    {
-                                        height = -75;
-                                        fov = 120;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 20)
-                                    {
-                                        height = -100;
-                                        fov = 150;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 15)
-                                    {
-                                        height = -120;
-                                        fov = 200;
-                                    }
-                                    else if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 10)
-                                    {
-                                        height = -150;
-                                        fov = 350;
-                                    }
+                                    height = 0;
+                                    if (dist > 100 && dist < 200)
+                                        aim.Y = (screen.Y - 20 + height + (-1 * (dist / 15)));
+                                    else if (dist < 100)
+                                        aim.Y = (screen.Y - 40 + height + (-1 * (dist / 15)));
+                                    else
+                                        aim.Y = (screen.Y + height + (-1 * (dist / 15)));
+                                }
+                                else
+                                {
                                     aim.Y = screen.Y + height;
-
-
                                 }
                                 Cursor.Position = new Point((int)aim.X, (int)aim.Y); ;
 
@@ -551,6 +484,11 @@ namespace Whynot
 
             }
 
+            if (Main.GetAsyncKeyState(Keys.Delete))
+            {
+                nuke = !nuke;
+
+            }
             if (Main.GetAsyncKeyState(Keys.Down))
             {
                 if (Main.GetAsyncKeyState(Keys.RControlKey))
@@ -564,16 +502,6 @@ namespace Whynot
             if (Main.GetAsyncKeyState(Keys.LMenu))
             {
                 aimbot = !aimbot;
-            }
-            if (Main.GetAsyncKeyState(Keys.Delete))
-            {
-                try
-                {
-                    Close();
-                }
-                catch (Exception) { }
-                Thread.Sleep(100);
-
             }
             if (Main.GetAsyncKeyState(Keys.K))
             {
@@ -599,7 +527,7 @@ namespace Whynot
 
         }
 
-  
+
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
