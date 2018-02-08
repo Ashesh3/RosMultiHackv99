@@ -180,7 +180,7 @@ namespace Whynot
                 center.X = this.Width / 2;
                 center.Y = (this.Height / 2) + 20;
                 drawnawbrudda.Clear(Color.Black);
-                num1 = Mem.ReadMemory<int>(Mem.BaseAddress + 0x1ED7794);
+                num1 = Mem.ReadMemory<int>(Mem.BaseAddress + Offsets.LocalPlayer);
                 numnya = Mem.ReadMemory<int>(Mem.BaseAddress + 34);
                 MyPosition.X = Mem.ReadMemory<float>(num1 + 16);
                 MyPosition.Y = Mem.ReadMemory<float>(num1 + 16 + 4);
