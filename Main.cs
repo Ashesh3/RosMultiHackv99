@@ -221,9 +221,10 @@ namespace Whynot
                     aa = (aimbot) ? 1 : 0;
                     n = (Settings.NoClip) ? 1 : 0;
                     a2 = (Settings.SmartHeight) ? 1 : 0;
+                    int nkk = (nuke) ? 1 : 0;
                     MethodInvoker inv = delegate
                     {
-                        this.label3.Text = "Range: " + range + " m \n" + "AIMBOT:" + aa + "\n" + "FOV:" + fov + "\n NOCLIP: " + n + "\nSmartAim: " + a2 + " \n Height: " + height + "\n NoClip Speed: " + speed;
+                        this.label3.Text = "NUKE: "+nkk+"Range: " + range + " m \n" + "AIMBOT:" + aa + "\n" + "FOV:" + fov + "\n NOCLIP: " + n + "\nSmartAim: " + a2 + " \n Height: " + height + "\n NoClip Speed: " + speed;
                     };
                     this.Invoke(inv);
 
