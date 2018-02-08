@@ -48,6 +48,15 @@ Misc
 + Makes ROS FullScreen Borderless
 + Dynamic Window Grabbing technique (should work on upcoming updates)
 + Cool ESP Colors 
++ ---------------------- PLAYER NUKE - Delete -----------------------------
+Player Nuke - Kills all players within 100m range.
+
+
+Steps:
+1. Step in a vehicle
+2. Drive fast
+3. Press Delete to toggle nuke on/off
+
 + Works with my Chams  so you can run both chams and this cheat
 
 -----------------------------------------------------------------------------------------------------------------------
