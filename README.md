@@ -1,5 +1,5 @@
 
-# ROS MultiHack v99 |ESP|AIMBOT|NOCLIP|PROPS|FULLSCREEN
+# ROS MultiHack v100 |ESP|AIMBOT|NOCLIP|NUKE|FULLSCREEN
 
 -----------------------------------------------------------------------------------------------------------------------
 Details:
