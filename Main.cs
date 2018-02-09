@@ -518,6 +518,8 @@ namespace Whynot
                             }
                             if (Bot && Settings.ESP == true)
                             {
+                                if (nuke)
+                                    Mem.WriteMemory<Vector3>(Adress3 + 16, MyPosition);
                                 drawnawbrudda.DrawString("ROBOT", this.font, Brushes.Chartreuse, screen.X, screen.Y - 20f);
                                 drawnawbrudda.DrawString("[ " + (object)Helper.GetDistance(MyPosition, EnemyPos, 10) + " Meter]", this.font, Brushes.Chartreuse, screen.X - 10f, screen.Y + 30f);
                                 drawnawbrudda.DrawLine(new Pen((Brush)new SolidBrush(colour.newco)), bottom, pointxx(screen));
