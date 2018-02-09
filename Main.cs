@@ -38,7 +38,8 @@ namespace Whynot
         private Label label1;
         private Label label2;
         private Label label3;
-        int res = WinAPI.SystemParametersInfo(113, 0, 20, 0);
+        int res = WinAPI.SystemParametersInfo(113, 0, 10, 0);
+
         public static Point pointxx(Vector2 vec)
         {
             return new Point((int)vec.X, (int)vec.Y);
