@@ -697,11 +697,11 @@ namespace Whynot
 
             }
 
-            if (Main.GetAsyncKeyState(Keys.Delete))
+          if (Main.GetAsyncKeyState(Keys.Delete))
             {
                 nuke = !nuke;
-
-            }
+                Thread.Sleep(100);
+           }
             if (Main.GetAsyncKeyState(Keys.Down))
             {
                 if (Main.GetAsyncKeyState(Keys.RControlKey))
@@ -715,6 +715,7 @@ namespace Whynot
             if (Main.GetAsyncKeyState(Keys.LMenu))
             {
                 aimbot = !aimbot;
+                Thread.Sleep(100);
             }
 
             if (Main.GetAsyncKeyState(Keys.K))
@@ -728,11 +729,14 @@ namespace Whynot
             if (Main.GetAsyncKeyState(Keys.U))
             {
                 Settings.DEBUG = !Settings.DEBUG;
+                Thread.Sleep(100);
             }
             if (Main.GetAsyncKeyState(Keys.Y))
             {
 
                 Scopes48 = !Scopes48;
+                Thread.Sleep(100);
+
 
             }
             if (Main.GetAsyncKeyState(Keys.L))
