@@ -152,7 +152,7 @@ namespace Whynot
             }
             else
             {
-                int num = (int)MessageBox.Show("ROS MultiHack v99 by ~Ashesh [unknowncheats]\n------------------------\nO & P - adjurst aimbot height \n F1 Show Players + esp \n F2 Only Aimbot, No ESP \n F3 -  SMART_AIM!  \nLEFT ALT - Toggle Aimbot \n U - Show FOV \n UP and DOWN arrow - Aimbot Range  \n LEFT and RIGHT arrow - Aimbot FOV change \n------------------------\nToggle Noclip: J\n Controls: RCTRL+Arrow Keys, Backspace,RShift , f4,f5 - speed of noclip");
+                int num = (int)MessageBox.Show("ROS MultiHack v99 by ~Ashesh [unknowncheats]\n------------------------\nO & P - adjurst aimbot height \n F1 Show Players + esp \n F2 Only Aimbot, No ESP \n F3 -  SMART_AIM!  \nLEFT ALT - Toggle Aimbot \n U - Show FOV \n UP and DOWN arrow - Aimbot Range  \n LEFT and RIGHT arrow - Aimbot FOV change \n Y - toggle aimbot mode (4x8x, 2x,noscope) \n------------------------\nToggle Noclip: J\n Controls: RCTRL+Arrow Keys, Backspace,RShift , f4,f5 - speed of noclip");
                 Main.SetWindowLong(this.Handle, -20, Main.GetWindowLong(this.Handle, -20) | 524288 | 32);
             }
             new Thread(new ThreadStart(this.thread)).Start();
