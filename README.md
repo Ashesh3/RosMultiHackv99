@@ -1,3 +1,4 @@
+
 <p align="center"><img src="https://i.imgur.com/zbUTsRh.png"></p>
 <h1 align="center">Rules of Survival - Multi Hack</h1>
 
@@ -47,11 +48,11 @@
 
 ####  -*Aimbot* -
 
-* **O & P** - Adjust Aimbot height ```(Smart Aim must be OFF)```*
-* **Up Arrow Key**  - Increase Aimbot Distance Range by 25m*
-* **Down Arrow Key** - Decrease Aimbot Distance Range by 25m*
-* **Left Arrow Key** - Decrease Aimbot FOV Range by 1px*
-* **Right Arrow Key** - Increase Aimbot FOV Range by 1px*
+* **O & P** - Adjust Aimbot height ```(Smart Aim must be OFF)```**
+* **Up Arrow Key**  - Increase Aimbot Distance Range by 25m**
+* **Down Arrow Key** - Decrease Aimbot Distance Range by 25m**
+* **Left Arrow Key** - Decrease Aimbot FOV Range by 1px**
+* **Right Arrow Key** - Increase Aimbot FOV Range by 1px**
 
 #### - *No Clip* -
 
@@ -59,7 +60,15 @@
 * **Back Space Key** - Fly Up
 * **Right Shift Key** - Fly Down
 
-```* You can hold this key down to make selection faster```
+#### - *Nuke Player* -
+
+* **Delete** - Boom !
+  * Steps :
+    * Enter Vehicle
+    * Drive Fast
+    * Press Delete to toggle nuke ON/OFF
+
+```** You can hold this key down to make selection faster```
 
 ## Getting Started
 You will need know the basic about how to compile a program using Visual Studio.
@@ -73,5 +82,4 @@ You will need know the basic about how to compile a program using Visual Studio.
 ![alt text](https://i.imgur.com/kw3OfQj.jpg "Screenshot")
 ![alt text](https://i.imgur.com/zjJdaBZ.jpg "Screenshot")
 ![alt text](https://i.imgur.com/UiBDs3d.jpg "Screenshot")
-
 ![alt text](https://i.imgur.com/IGwjflD.jpg "Screenshot")
