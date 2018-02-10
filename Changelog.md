@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 
 
-## [0.0.2] / 7-02-2018
+## [0.0.2] / 10-02-2018
 
 ### Added
 * Auto Restart & Exit Key - [@DedSec](https://github.com/Ashesh3)
