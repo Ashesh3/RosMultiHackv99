@@ -39,7 +39,6 @@ namespace Whynot
         private Label label2;
         private Label label3;
         int res = WinAPI.SystemParametersInfo(113, 0, 10, 0);
-
         public static Point pointxx(Vector2 vec)
         {
             return new Point((int)vec.X, (int)vec.Y);
@@ -123,6 +122,12 @@ namespace Whynot
         private static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
         [DllImport("user32.dll", SetLastError = true)]
         internal static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
+        [DllImport("user32.dll")]
+        static extern bool AllowSetForegroundWindow(int dwProcessId);
+        [DllImport("user32.dll")]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
+        [DllImport("user32.dll")]
+        static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -136,10 +141,12 @@ namespace Whynot
                 MoveWindow(aaaa, resolution.Top, resolution.Left, resolution.Width, resolution.Height, true);
 
             }
-          
-           
-            //ShowWindowAsync(aaaa, 5); //Fullscreenbug
+
+
+           //ShowWindowAsync(aaaa, 5); //Fullscreenbug
             this.TopMost = true;
+            this.TopLevel = true;
+            
             this.BackColor = Color.Black;
             this.TransparencyKey = Color.Black;
             this.DoubleBuffered = true;
@@ -153,7 +160,7 @@ namespace Whynot
             }
             else
             {
-                int num = (int)MessageBox.Show("ROS MultiHack v99 by ~Ashesh [unknowncheats]\n------------------------\nO & P - adjurst aimbot height \n F1 Show Players + esp \n F2 Only Aimbot, No ESP \n F3 -  SMART_AIM!  \nLEFT ALT - Toggle Aimbot \n U - Show FOV \n UP and DOWN arrow - Aimbot Range  \n LEFT and RIGHT arrow - Aimbot FOV change \n Y - toggle aimbot mode (4x8x, 2x,noscope) \n------------------------\nToggle Noclip: J\n Controls: RCTRL+Arrow Keys, Backspace,RShift , f4,f5 - speed of noclip");
+                int num = (int)MessageBox.Show("ROS MultiHack v100 by ~Ashesh [unknowncheats]\n------------------------\nO & P - adjurst aimbot height \n F1 Show Players + esp \n F2 Only Aimbot, No ESP \n F3 -  SMART_AIM!  \nLEFT ALT - Toggle Aimbot \n U - Show FOV \n UP and DOWN arrow - Aimbot Range  \n LEFT and RIGHT arrow - Aimbot FOV change \n Y - toggle aimbot mode (4x8x, 2x,noscope) \n------------------------\nToggle Noclip: J\n Controls: RCTRL+Arrow Keys, Backspace,RShift , f4,f5 - speed of noclip\n LEFT CTRL + Delete : Exit Cheat");
                 Main.SetWindowLong(this.Handle, -20, Main.GetWindowLong(this.Handle, -20) | 524288 | 32);
             }
             new Thread(new ThreadStart(this.thread)).Start();
@@ -187,15 +194,18 @@ namespace Whynot
 
             while (true)
             {
-                try {
+                try
+                {
                     MethodInvoker inv = delegate
                     {
                         SetWindowPos(this.Handle, new IntPtr(-1), 0, 0, 0, 0, 0x0001 | 0x0002);
                         this.TopMost = true;
+                        this.TopLevel = true;
+
 
                     };
                     this.Invoke(inv);
-
+              
 
                     center.X = this.Width / 2;
                     center.Y = (this.Height / 2) + 20;
@@ -221,7 +231,10 @@ namespace Whynot
                         {
                             SetWindowPos(this.Handle, new IntPtr(-1), 0, 0, 0, 0, 0x0001 | 0x0002);
                             this.TopMost = true;
+                            this.TopLevel = true;
+
                         };
+                       
                         this.Invoke(invx);
                         Adress3 = Mem.ReadMemory<int>(Adress2 + 12);
                         str = Mem.ReadString(Mem.ReadMemory<int>(Mem.ReadMemory<int>(Adress3 + 4) + 12), 20);
@@ -258,7 +271,7 @@ namespace Whynot
                         }
                         MethodInvoker inv3 = delegate
                         {
-                            this.label3.Text = "Nuke: "+nk+" \nRange: " + range + " m \n" + "AIMBOT:" + aa + "\n" + "TYPE:" + typee + "\n NOCLIP: " + n + "\nSmartAim: " + a2 + " \n Height: " + height + "\n NoClip Speed: " + speed;
+                            this.label3.Text = "Nuke: " + nk + " \nRange: " + range + " m \n" + "AIMBOT:" + aa + "\n" + "TYPE:" + typee + "\n NOCLIP: " + n + "\nSmartAim: " + a2 + " \n Height: " + height + "\n NoClip Speed: " + speed;
                         };
                         this.Invoke(inv3);
 
@@ -292,7 +305,8 @@ namespace Whynot
                                             drawnawbrudda.DrawString("Player", this.font, Brushes.Red, screen.X, screen.Y - 20f);
                                             drawnawbrudda.DrawLine(Dpen, bottom, pointxx(screen));
 
-                                        } catch (Exception)
+                                        }
+                                        catch (Exception)
                                         {
 
                                         }
@@ -329,7 +343,7 @@ namespace Whynot
                                     aim.X = screen.X + w;
                                     if (Settings.SmartHeight)
                                     {
-                                       if(Scopes48)
+                                        if (Scopes48)
                                         {
                                             if (Helper.GetDistance(MyPosition, EnemyPos, 10) > 400)
                                             {
@@ -569,11 +583,17 @@ namespace Whynot
 
                     }
                     graphics.DrawImage((Image)bitmap, 0, 0);
-                    Thread.Sleep(10);
+                    Thread.Sleep(100);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    MessageBox.Show("Crash Reason: " + e.Message);
+                    Process.Start(Application.ExecutablePath);
 
+                    //some time to start the new instance.
+                    Thread.Sleep(2000);
+
+                    Environment.Exit(-1);//Force termination of the current process.
                 }
             }
         }
@@ -700,11 +720,15 @@ namespace Whynot
 
             }
 
-          if (Main.GetAsyncKeyState(Keys.Delete))
+            if (Main.GetAsyncKeyState(Keys.Delete))
             {
+                if (Main.GetAsyncKeyState(Keys.LControlKey))
+                {
+                             Environment.Exit(-1);//Force termination of the current process.
+                }
                 nuke = !nuke;
                 Thread.Sleep(100);
-           }
+            }
             if (Main.GetAsyncKeyState(Keys.Down))
             {
                 if (Main.GetAsyncKeyState(Keys.RControlKey))
