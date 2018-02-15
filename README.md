@@ -3,7 +3,6 @@
 <h1 align="center">Rules of Survival - Multi Hack</h1>
 
 <p align="center">
-	<a href="https://discord.gg/VTMGTA4" alt="Join us on Discord !"><img src="https://img.shields.io/discord/379599906786115594.svg" /></a>
 	<a href="https://github.com/Ashesh3/RosMultiHackv99/releases" alt="Total Download"><img src="https://img.shields.io/github/downloads/Ashesh3/RosMultiHackv99/total.svg" /></a>
 	<a href="https://github.com/Ashesh3/RosMultiHackv99/tree/master" alt="This Project is Maintained"><img src="https://img.shields.io/maintenance/yes/2018.svg" /></a>
 	<a href="https://github.com/Ashesh3/RosMultiHackv99/graphs/contributors" alt="Contributor List"><img src="https://img.shields.io/github/contributors/Ashesh3/RosMultiHackv99.svg" /></a>
